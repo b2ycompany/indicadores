@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicadores de Vendas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h1>Indicadores de Vendas</h1>
+    
+    <h3>Resumo ABC</h3>
+    <div>
+        {{ abc_summary | safe }}
+    </div>
+    
+    <h3>Top 10 Produtos por Volume de Vendas</h3>
+    <div>
+        {{ top_10_products | safe }}
+    </div>
+    
+    <h3>Baixar Arquivos</h3>
+    <ul>
+        <li><a href="/download_csv" class="btn btn-primary">Baixar CSV</a></li>
+        <li><a href="/download_png" class="btn btn-primary">Baixar Gráfico (PNG)</a></li>
+        <li><a href="/download_pdf" class="btn btn-primary">Baixar PDF</a></li>
+    </ul>
+</div>
+
+</body>
+</html>
