@@ -1,28 +1,33 @@
-name: Run Python Script
+name: Processar Indicadores
 
 on:
   push:
     branches:
-      - main
+      - main  # Executa ao enviar código para a branch principal
 
 jobs:
-  run-script:
+  process-data:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout do código
       uses: actions/checkout@v2
 
-    - name: Set up Python
+    - name: Configurar Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.9'
 
-    - name: Install dependencies
+    - name: Instalar dependências
       run: |
         python -m pip install --upgrade pip
-        pip install pandas numpy matplotlib seaborn flask
+        pip install pandas matplotlib
 
-    - name: Run Flask app
-      run: |
-        python app.py
+    - name: Executar o script de indicadores
+      run: python indicador.py
+
+    - name: Fazer upload dos arquivos de saída
+      uses: actions/upload-artifact@v2
+      with:
+        name: resultados
+        path: output/
