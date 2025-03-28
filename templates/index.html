@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,21 +11,12 @@
 <div class="container mt-4">
     <h1>Indicadores de Vendas</h1>
     
-    <h3>Resumo ABC</h3>
-    <div>
-        {{ abc_summary | safe }}
-    </div>
-    
-    <h3>Top 10 Produtos por Volume de Vendas</h3>
-    <div>
-        {{ top_10_products | safe }}
-    </div>
+    <h3>Gráfico - Top 10 Produtos</h3>
+    <img src="/download_png" class="img-fluid" alt="Top 10 Produtos">
     
     <h3>Baixar Arquivos</h3>
     <ul>
         <li><a href="/download_csv" class="btn btn-primary">Baixar CSV</a></li>
-        <li><a href="/download_png" class="btn btn-primary">Baixar Gráfico (PNG)</a></li>
-        <li><a href="/download_pdf" class="btn btn-primary">Baixar PDF</a></li>
     </ul>
 </div>
 
