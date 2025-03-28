@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Read the CSV file
-df = pd.read_csv('Pasta13 - Planilha1.csv', thousands='.', decimal=',')
+df = pd.read_csv('data/Pasta13 - Planilha1.csv', thousands='.', decimal=',')
+
 
 # Clean and preprocess the data
 df['QTD_FATURADA'] = df['QTD FATURADA'].str.replace(' ', '').astype(float)
