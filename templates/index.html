@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indicadores de Vendas</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <h1>📊 Indicadores de Vendas</h1>
 
-<div class="container mt-4">
-    <h1>Indicadores de Vendas</h1>
-    
-    <h3>Gráfico - Top 10 Produtos</h3>
-    <img src="/download_png" class="img-fluid" alt="Top 10 Produtos">
-    
-    <h3>Baixar Arquivos</h3>
+    <h2>Gráfico - Top 10 Produtos</h2>
+    <img src="{{ url_for('static', filename='top_10_products.png') }}" alt="Top 10 Produtos" width="600">
+
+    <h2>Gráfico - Distribuição ABC</h2>
+    <img src="{{ url_for('static', filename='abc_distribution.png') }}" alt="ABC Distribuição" width="600">
+
+    <h2>Top 10 Produtos</h2>
+    <table border="1">
+        <tr><th>Produto</th><th>SKU</th><th>Qtd. Faturada</th></tr>
+        {% for item in top_10 %}
+        <tr><td>{{ item['DESCR'] }}</td><td>{{ item['SKU'] }}</td><td>{{ item['QTD_FATURADA'] }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h2>Baixar Arquivos</h2>
     <ul>
-        <li><a href="/download_csv" class="btn btn-primary">Baixar CSV</a></li>
+        <li><a href="{{ url_for('download_file', filename='top_10_products.csv') }}">📥 Top 10 Produtos (CSV)</a></li>
+        <li><a href="{{ url_for('download_file', filename='abc_analysis_summary.csv') }}">📥 Análise ABC (CSV)</a></li>
     </ul>
-</div>
-
 </body>
 </html>
