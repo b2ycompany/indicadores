@@ -6,9 +6,12 @@ import seaborn as sns
 # Read the CSV file
 df = pd.read_csv('data/Pasta13 - Planilha1.csv', thousands='.', decimal=',')
 
-
 # Clean and preprocess the data
-df['QTD_FATURADA'] = df['QTD FATURADA'].str.replace(' ', '').astype(float)
+# Remove any non-breaking spaces (\xa0) and replace commas with dots
+df['QTD_FATURADA'] = df['QTD FATURADA'].str.replace('\xa0', ' ')  # Remove non-breaking spaces
+df['QTD_FATURADA'] = df['QTD_FATURADA'].str.replace(' ', '')  # Remove spaces
+df['QTD_FATURADA'] = df['QTD_FATURADA'].str.replace(',', '.')  # Replace commas with dots
+df['QTD_FATURADA'] = pd.to_numeric(df['QTD_FATURADA'], errors='coerce')  # Convert to numeric, coerce errors to NaN
 
 # Sort the dataframe by quantity sold in descending order
 df_sorted = df.sort_values('QTD_FATURADA', ascending=False)
